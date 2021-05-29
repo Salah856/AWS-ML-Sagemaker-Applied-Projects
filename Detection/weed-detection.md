@@ -22,3 +22,13 @@ We solve this problem by feeding images of crops with and without weeds to Amazo
 4. For Project name, enter a name (for example, Weed-detection-in-crops).
 5. Choose Create project.
 
+
+![2](https://user-images.githubusercontent.com/23625821/120065546-1ec58d00-c072-11eb-82fe-958a406bcfdf.jpg)
+
+Next, we create a dataset.
+
+6. On the Amazon Rekognition Custom Labels console, choose Datasets.
+7. Choose Create dataset.
+8. Enter a name for your dataset, such as crop-weed-ds.
+9. Select your training data location (for this post, we select Upload images from your computer).
+
