@@ -12,3 +12,13 @@ In this post, we use Amazon Rekognition Custom Labels to build an ML model that 
 ## Create and train a weed detection model
 
 We solve this problem by feeding images of crops with and without weeds to Amazon Rekognition Custom Labels and building an ML model. After the model is built and deployed, we can perform inference by feeding the model images from field cameras. This way farmers can automate weed detection in their fields. Our experiments showed that highly accurate models can be built with as few as 32 images.
+
+1 .On the Amazon Rekognition console, choose Use Custom Labels.
+
+![1-3259-Graphic](https://user-images.githubusercontent.com/23625821/120065517-f2aa0c00-c071-11eb-8d1f-b615f9c844f4.jpg)
+
+2. Choose Projects.
+3. Choose Create project.
+4. For Project name, enter a name (for example, Weed-detection-in-crops).
+5. Choose Create project.
+
