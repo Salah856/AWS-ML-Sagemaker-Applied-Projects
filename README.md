@@ -1,5 +1,5 @@
 # AWS-ML-Sagemaker-Applied-Projects
 
-### references: 
+## References: 
 
 #### AWS ML Blog Articles 
