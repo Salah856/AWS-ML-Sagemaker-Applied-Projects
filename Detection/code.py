@@ -30,3 +30,15 @@ if __name__ == "__main__":
     main()
     
     
+
+    
+# The results from using the SDK are the same as earlier from the browser:
+
+# Label weed
+# Confidence 92.1469955444336
+
+# Label good-crop
+# Confidence 7.852999687194824
+
+# Custom labels detected: 2
+
