@@ -32,3 +32,9 @@ Next, we create a dataset.
 8. Enter a name for your dataset, such as crop-weed-ds.
 9. Select your training data location (for this post, we select Upload images from your computer).
 
+
+![3](https://user-images.githubusercontent.com/23625821/120065582-4c123b00-c072-11eb-9964-929244317352.jpg)
+
+10. Choose Add images to upload your images.
+
+
