@@ -113,4 +113,19 @@ class ProteinClassifier(nn.Module):
 ```
 
 
+Training script
+We use the PyTorch-Transformers library, which contains PyTorch implementations and pretrained model weights for many NLP models, including BERT. As mentioned earlier, we use the ProtBERT model, which is pretrained on protein sequences.
 
+We also use the distributed data parallel feature launched in December 2020 to speed up the training by distributing the data on multiple GPUs. It’s very similar to a PyTorch training script you might run outside of SageMaker, but modified to run with SDP. SDP’s PyTorch client provides an alternative to PyTorch’s native DDP. For details about how to use SDP in your native PyTorch script, see the Get Started with Distributed Training.
+
+The following script saves the model artifacts learned during training to a file path, model_dir, as mandated by the SageMaker PyTorch image:
+
+# SageMaker Distributed code.
+
+```python 
+from smdistributed.dataparallel.torch.parallel.distributed import DistributedDataParallel as DDP
+import smdistributed.dataparallel.torch.distributed as dist
+
+# intializes the process group for distributed training
+dist.init_process_group()
+```
