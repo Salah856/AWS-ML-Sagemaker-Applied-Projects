@@ -149,3 +149,6 @@ torch-optimizer
 sagemaker==2.19.0
 boto3
 ```
+
+
+## reference: https://aws.amazon.com/blogs/machine-learning/fine-tune-and-deploy-the-protbert-model-for-protein-classification-using-amazon-sagemaker/
