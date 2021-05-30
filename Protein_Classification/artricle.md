@@ -32,3 +32,10 @@ is_train – Indicates whether the record should be used for training or test. I
 When we plot the sequence lengths of each record as an histogram, we observe the following distribution.
 
 
+This is an important observation because the ProtBERT model receives a fixed sentence length as input. Usually, the maximum length of a sentence depends on the data we’re working on. For sentences that are shorter than this maximum length, we have to add paddings (empty tokens) to the sentences to make up the length.
+
+In the preceding plot, most of the sequences are under 1,500 characters in length, therefore, it’s a good idea to choose max_length = 1536, but that increases the training time for this sample notebook, therefore, we use max_length = 512.
+
+When we’re retrieving each sequence record using the Pytorch DataLoaders during training, we must ensure that each sequence is tokenized, truncated, and the necessary padding is added to make them all the same max_length value. To encapsulate this process, we define the ProteinSequenceDataset class, which uses the encode_plus() API provided by the Hugging Face transformer library:
+
+
