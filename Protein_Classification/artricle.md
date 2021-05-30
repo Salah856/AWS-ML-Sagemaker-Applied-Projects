@@ -36,6 +36,46 @@ This is an important observation because the ProtBERT model receives a fixed sen
 
 In the preceding plot, most of the sequences are under 1,500 characters in length, therefore, it’s a good idea to choose max_length = 1536, but that increases the training time for this sample notebook, therefore, we use max_length = 512.
 
-When we’re retrieving each sequence record using the Pytorch DataLoaders during training, we must ensure that each sequence is tokenized, truncated, and the necessary padding is added to make them all the same max_length value. To encapsulate this process, we define the ProteinSequenceDataset class, which uses the encode_plus() API provided by the Hugging Face transformer library:
+When we’re retrieving each sequence record using the Pytorch DataLoaders during training, we must ensure that each sequence is tokenized, truncated, and the necessary padding is added to make them all the same max_length value. To encapsulate this process, we define the ProteinSequenceDataset class, which uses the encode_plus() API provided by the Hugging Face transformer library
 
 
+```python
+
+#data_prep.py
+
+import torch
+from torch import nn
+import torch.utils.data
+import torch.utils.data.distributed
+from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
+
+class ProteinSequenceDataset(Dataset):
+    def __init__(self, sequence, targets, tokenizer, max_len):
+        self.sequence = sequence
+        self.targets = targets
+        self.tokenizer = tokenizer
+        self.max_len = max_len
+
+    def __len__(self):
+        return len(self.sequence)
+
+    def __getitem__(self, item):
+        sequence = str(self.sequence[item])
+        target = self.targets[item]
+        encoding = self.tokenizer.encode_plus(
+            sequence,
+            truncation=True,
+            add_special_tokens=True,
+            max_length=self.max_len,
+            return_token_type_ids=False,
+            padding='max_length',
+            return_attention_mask=True,
+            return_tensors='pt',
+        )
+        return {
+          'protein_sequence': sequence,
+          'input_ids': encoding['input_ids'].flatten(),
+          'attention_mask': encoding['attention_mask'].flatten(),
+          'targets': torch.tensor(target, dtype=torch.long)
+        }
+```
