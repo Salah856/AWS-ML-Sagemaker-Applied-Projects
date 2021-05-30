@@ -60,3 +60,12 @@ class ProteinClassifier(nn.Module):
           attention_mask=attention_mask
         )
         return self.classifier(output.pooler_output)
+
+    
+
+from smdistributed.dataparallel.torch.parallel.distributed import DistributedDataParallel as DDP
+import smdistributed.dataparallel.torch.distributed as dist
+
+# intializes the process group for distributed training
+dist.init_process_group()
+
