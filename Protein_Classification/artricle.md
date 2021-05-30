@@ -79,3 +79,38 @@ class ProteinSequenceDataset(Dataset):
           'targets': torch.tensor(target, dtype=torch.long)
         }
 ```
+
+ProtBERT fine-tuning
+In computational biology and bioinformatics, we have gold mines of data from protein sequences, but we need high computing resources to train the models, which can be limiting and costly. One way to overcome this challenge is to use transfer learning.
+
+Transfer learning is an ML method in which a pretrained model, such as a pretrained BERT model for text classification, is reused as the starting point for a different but related problem. By reusing parameters from pretrained models, you can save significant amounts of training time and cost.
+
+In our notebook, we use the pretrained prot_bert_bfd_localization model on the DeepLoc dataset for predicting protein subcellular localization by adding a classification layer, as shown in the following code:
+
+```python 
+#model_def.py
+from transformers import BertModel, BertTokenizer, AdamW, get_linear_schedule_with_warmup
+import torch
+import torch.nn.functional as F
+import torch.nn as nn
+
+PRE_TRAINED_MODEL_NAME = 'Rostlab/prot_bert_bfd_localization'
+class ProteinClassifier(nn.Module):
+    def __init__(self, n_classes):
+        super(ProteinClassifier, self).__init__()
+        self.bert = BertModel.from_pretrained(PRE_TRAINED_MODEL_NAME)
+        self.classifier = nn.Sequential(nn.Dropout(p=0.2),
+                                        nn.Linear(self.bert.config.hidden_size, n_classes),
+                                        nn.Tanh())
+        
+    def forward(self, input_ids, attention_mask):
+        output = self.bert(
+          input_ids=input_ids,
+          attention_mask=attention_mask
+        )
+        return self.classifier(output.pooler_output)
+
+```
+
+
+
