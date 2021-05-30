@@ -140,3 +140,12 @@ def save_model(model, model_dir):
     logger.info(f"Saving model: {path} \n")
     
 ```
+
+Because PyTorch-Transformer isn’t included natively in SageMaker PyTorch images, we have to provide a requirements.txt file so that SageMaker installs this library for training and inference. A requirements.txt file is a text file that contains a list of items that are installed by using pip install. You can also specify the version of an item to install. To install PyTorch-Transformer and other libraries, we add the following line to the requirements.txt file:
+
+```
+transformers
+torch-optimizer
+sagemaker==2.19.0
+boto3
+```
