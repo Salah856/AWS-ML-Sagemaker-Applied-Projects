@@ -69,3 +69,12 @@ import smdistributed.dataparallel.torch.distributed as dist
 # intializes the process group for distributed training
 dist.init_process_group()
 
+
+
+def save_model(model, model_dir):
+    path = os.path.join(model_dir, 'model.pth')
+    # recommended way from http://pytorch.org/docs/master/notes/serialization.html
+    torch.save(model.state_dict(), path)
+    logger.info(f"Saving model: {path} \n")
+    
+    
