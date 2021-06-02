@@ -21,3 +21,6 @@ The inference code in this case is just the Lambda code, which you can edit dire
 You can store the model in the Lambda package or container, or pulled down from Amazon Simple Storage Service (Amazon S3). The latter method introduces additional latency, but it’s very low for small models.
 
 You can trigger Lambda via various services internally, or via Amazon API Gateway.
+
+One limitation of this approach when using Lambda layers is that only small models can be accommodated (50 MB zipped layer size limit for Lambda), but with SageMaker Neo, you can potentially obtain a 10x reduction in the amount of memory required by the framework to run a model. The model and framework are compiled into a single executable that can be deployed in production to make fast, low-latency predictions. Additionally, the recently launched container image support allows you to use up to a 10 GB size container for Lambda tasks.
+
