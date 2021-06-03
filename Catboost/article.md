@@ -12,11 +12,11 @@ However, if the cross-sell approach isn’t data driven, it often leads to the w
 
 While we were conceiving an accurate cross-sell solution, we were mindful of its ability to adapt with changing customer behavior and product (policy) features. ML was a natural choice in this context. We defined the solution as a combination of two different ML models:
 
-### Cross-sell propensity model 
+#### Cross-sell propensity model 
 
 When you have tens of thousands of customers to cross-sell to, your first priority is to find the most promising prospects from them. A supervised classification model was conceptualized for this purpose. It was designed to identify the cross-sell prospects along with a propensity score between 0–1, indicating the likelihood of conversion (1 being the highest). You can use the propensity scores to group the classified prospects into different priority segments for further perusal by business teams.
 
-### Policy recommendation model
+#### Policy recommendation model
 
 After you identify a cross-sell prospect, you need to know what policies will serve them best. That is where the recommendation engine came into the picture. Its purpose was to rank and recommend the top three policies for each prospect.
 
