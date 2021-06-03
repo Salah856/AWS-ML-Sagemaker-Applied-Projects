@@ -73,3 +73,43 @@ if __name__ =='__main__':
     
     # persist model
     model.save_model(args.model_file
+
+                     
+                     
+     ####################################################
+                     
+     import tarfile
+from sagemaker.estimator import Estimator
+
+program = 'catboost_training.py'
+project = 'cb_classifier'
+src_zip = 'scripts.tar.gz'
+
+# compress the code and upload in S3
+tar = tarfile.open(source, 'w:gz')
+tar.add(program)
+tar.close()
+
+submit_dir = sess.upload_data(
+    path=src_zip, 
+    bucket=bucket,
+    key_prefix=project+ '/' + src_zip)
+    
+output_path = "s3://{}/{}/training_jobs".format(bucket, project)
+
+# Create the SageMaker Estimator using custom container and training script
+# container_image_uri indicates the ECR uri of the container docker image
+# program and submit_dir relate to the python training script
+# categorical_fields is a string listing the categorical fields
+# 'cross_sell' is the classification target field
+model = Estimator(container_image_uri,
+                      role=role,
+                      train_instance_count=1,
+                      train_instance_type='ml.m5.xlarge',
+                      output_path=output_path,
+                      hyperparameters={'sagemaker_program': program,
+                                       'sagemaker_submit_directory': submit_dir,
+                                       'categorical_fields': categorical_fields,
+                                       'target': 'cross_sell'})
+                     
+                     
