@@ -19,3 +19,7 @@ When you have tens of thousands of customers to cross-sell to, your first priori
 ### Policy recommendation model
 
 After you identify a cross-sell prospect, you need to know what policies will serve them best. That is where the recommendation engine came into the picture. Its purpose was to rank and recommend the top three policies for each prospect.
+
+## Early insights from the data
+We started with around 100,000 records with over 200 attributes around customers and policies. Existing cross-sell cases could be labeled using a set of business rules.
+
