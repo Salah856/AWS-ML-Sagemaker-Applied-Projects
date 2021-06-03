@@ -32,3 +32,5 @@ Because one-hot encoding fails to scale for high-cardinality features, we had to
 
 This approach helps handle very high cardinality without losing their associations with the target variable. Other noteworthy benefits are ordered boosting, addressing the prediction shift (latent target leakage) problems due to greedy boosting in regular gradient boosting approaches, and feature combinations, which help generate new features by combining multiple categorical features, thereby improving the predictive power of the model.
 
+
+https://aws.amazon.com/blogs/machine-learning/edelweiss-improves-cross-sell-using-machine-learning-on-amazon-sagemaker/
