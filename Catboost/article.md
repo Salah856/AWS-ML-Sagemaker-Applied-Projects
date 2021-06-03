@@ -23,3 +23,10 @@ After you identify a cross-sell prospect, you need to know what policies will se
 ## Early insights from the data
 We started with around 100,000 records with over 200 attributes around customers and policies. Existing cross-sell cases could be labeled using a set of business rules.
 
+
+## Building the propensity model using SageMaker
+
+Data volume and the nature of the data were the primary considerations while deciding on the solution for the propensity classification model. Because the data was fully structured and not too high in volume, neural network-based variants weren’t the most suitable options. Ensemble method-based classifiers, on the other hand, seemed to be the apt choice, especially considering the high dimensionality of data and the large number of categorical features, many with high cardinality.
+
+
+
