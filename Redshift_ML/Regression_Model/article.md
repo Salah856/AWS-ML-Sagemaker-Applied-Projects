@@ -73,3 +73,8 @@ Because the majority of the attributes like visibility_km and wind_chill are emp
 We use the following view in Amazon Redshift to apply these transformations
 
 refer to https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/preparation.sql
+
+
+
+
+https://aws.amazon.com/blogs/machine-learning/build-regression-models-with-amazon-redshift-ml/
