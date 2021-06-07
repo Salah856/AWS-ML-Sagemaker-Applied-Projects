@@ -60,3 +60,16 @@ Break down the trip date column into day, month, year, quarter, month_week, and 
 refer to: https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/preparation.sql
 
 
+
+### Weather
+
+The weather table contains Government of Canada historical weather data for 2017 and 2018 in UTC format. We performed the following data preparation activities:
+
+Transform the records from UTC to US/Eastern time zone.
+
+Aggregate the data to an hourly basis for better generalization.
+
+Because the majority of the attributes like visibility_km and wind_chill are empty in this dataset, we only use temp_c and precip_amount_mm columns for our model.
+We use the following view in Amazon Redshift to apply these transformations
+
+refer to https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/preparation.sql
