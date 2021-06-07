@@ -15,3 +15,17 @@ For example, you can identify which will be the best-selling product.
 
 Regression – Predict a numerical outcome, like the price of a house or how many people will use a city’s bike rental service.
 
+
+In this post, we use Amazon Redshift ML to build a regression model that predicts the number of people that may use the city of Toronto’s bike sharing service at any given hour of a day. The model accounts for various aspects, including holidays and weather conditions. Because we need to predict a numerical outcome, we create a regression model.
+
+We walk you through the following high-level steps:
+
+1. Input the raw data.
+
+2. Prepare the input data.
+
+3. Create the model.
+
+4. Validate the predictions.
+
+
