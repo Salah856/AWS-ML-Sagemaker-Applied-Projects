@@ -46,3 +46,15 @@ Let’s discuss about how the data can be biased and how selecting the right dis
 ### Ridership
 The ridership table contains Bike Share Toronto’s ridership information for 2017 and 2018. We performed the following data preparation steps to make it more meaningful for our ML model:
 
+
+The ridership table contains Bike Share Toronto’s ridership information for 2017 and 2018. We performed the following data preparation steps to make it more meaningful for our ML model:
+
+Transform the records to all be in the local time zone. The data before July 2017 was provided in UTC, whereas all data after that was in Toronto’s local time zone, EST.
+
+Discard trips with a duration under 60 seconds.
+Discard trips with a duration longer than a day.
+
+Aggregate data to an hourly basis (rather than minute-level granularity) for better generalization.
+Break down the trip date column into day, month, year, quarter, month_week, and week_day for better correlation with the number of rides.
+
+
