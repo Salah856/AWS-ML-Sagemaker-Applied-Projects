@@ -25,3 +25,13 @@ FROM
          1);
          
          
+
+CREATE OR REPLACE VEIW weather_view AS
+SELECT  
+    CONVERT_TIMEZONE('US/Eastern', 
+      DATE_TRUNC('hour',datetime_utc)) daytime
+    , ROUND(AVG(temp_c)) temp_c
+    , ROUND(AVG(precip_amount_mm)) precip_amount_mm
+FROM weather
+GROUP BY 1;
+
