@@ -34,4 +34,7 @@ We walk you through the following high-level steps:
 refer to : https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/data.sql 
 
 
+To load the data, use the following COPY commands. Replace the AWS Identity and Access Management (IAM) role with the IAM role that you created as part of the prerequisite steps earlier.
+
+refer to : https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/commands.sh 
 
