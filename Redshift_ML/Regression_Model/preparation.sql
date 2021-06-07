@@ -35,3 +35,35 @@ SELECT
 FROM weather
 GROUP BY 1;
 
+
+
+CREATE TABLE trip_data AS 
+SELECT         
+   r.trip_time
+  ,r.trip_count
+  ,r.trip_hour
+  ,r.trip_day
+  ,r.trip_month
+  ,r.trip_year
+  ,r.trip_quarter
+  ,r.trip_month_week
+  ,r.trip_week_day
+  ,w.temp_c
+  ,w.precip_amount_mm
+  ,CASE
+      WHEN h.holiday_date IS NOT NULL
+      THEN 1
+      WHEN TO_CHAR(r.trip_time,'D')::INT IN (1,7)
+      THEN 1
+      ELSE 0
+    END is_holiday
+  , ROW_NUMBER() OVER (ORDER BY RANDOM()) serial_number
+FROM           
+  ridership_view r
+JOIN            weather_view w
+  ON ( r.trip_time = w.daytime )
+LEFT OUTER JOIN holiday h
+  ON ( TRUNC(r.trip_time) = h.holiday_date );
+  
+  
+  
