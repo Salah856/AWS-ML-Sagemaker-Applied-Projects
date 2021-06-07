@@ -29,3 +29,9 @@ We walk you through the following high-level steps:
 4. Validate the predictions.
 
 
+## Input the raw data: 
+
+refer to : https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/data.sql 
+
+
+
