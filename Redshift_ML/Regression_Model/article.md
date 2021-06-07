@@ -57,4 +57,6 @@ Discard trips with a duration longer than a day.
 Aggregate data to an hourly basis (rather than minute-level granularity) for better generalization.
 Break down the trip date column into day, month, year, quarter, month_week, and week_day for better correlation with the number of rides.
 
+refer to: https://github.com/Salah856/AWS-ML-Sagemaker-Applied-Projects/blob/main/Redshift_ML/Regression_Model/preparation.sql
+
 
