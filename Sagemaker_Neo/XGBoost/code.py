@@ -5,6 +5,11 @@ from sklearn.datasets import load_svmlight_file, dump_svmlight_file
 from sklearn.model_selection import train_test_split
 import boto3
 
+import sagemaker
+from sagemaker.xgboost.estimator import XGBoost
+
+from sagemaker.session import Session
+from sagemaker.inputs import TrainingInput
 
 
 for p in ['raw_data', 'training_data', 'validation_data']:
@@ -24,10 +29,7 @@ dump_svmlight_file(x_test, y_test, 'validation_data/abalone.test')
 
 
 
-import sagemaker
-from sagemaker.xgboost.estimator import XGBoost
-from sagemaker.session import Session
-from sagemaker.inputs import TrainingInput
+
 
 bucket = Session().default_bucket()
 role = sagemaker.get_execution_role()
