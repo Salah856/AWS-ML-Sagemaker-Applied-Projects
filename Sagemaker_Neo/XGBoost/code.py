@@ -23,3 +23,41 @@ dump_svmlight_file(x_train, y_train, 'training_data/abalone.train')
 dump_svmlight_file(x_test, y_test, 'validation_data/abalone.test')
 
 
+
+import sagemaker
+from sagemaker.xgboost.estimator import XGBoost
+from sagemaker.session import Session
+from sagemaker.inputs import TrainingInput
+
+bucket = Session().default_bucket()
+role = sagemaker.get_execution_role()
+
+# initialize hyperparameters
+hyperparameters = {
+        "max_depth":"5",
+        "eta":"0.2",
+        "gamma":"4",
+        "min_child_weight":"6",
+        "subsample":"0.7",
+        "verbosity":"1",
+        "objective":"reg:squarederror",
+        "num_round":"10000"
+}
+
+# construct a SageMaker XGBoost estimator
+# specify the entry_point to your xgboost training script
+estimator = XGBoost(entry_point = "entrypoint.py", 
+                    framework_version='1.2-1', # 1.x MUST be used 
+                    hyperparameters=hyperparameters,
+                    role=role,
+                    instance_count=1,
+                    instance_type='local',
+                    output_path=f's3://{bucket}/neo-demo') # gets saved in bucket/neo-demo/job_name/model.tar.gz
+
+# define the data type and paths to the training and validation datasets
+content_type = "libsvm"
+train_input = TrainingInput('file://training_data', content_type=content_type)
+validation_input = TrainingInput('file://validation_data', content_type=content_type)
+
+# execute the XGBoost training job
+estimator.fit({'train': train_input, 'validation': validation_input}, logs=['Training'])
