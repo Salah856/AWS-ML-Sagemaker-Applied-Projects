@@ -25,3 +25,7 @@ Deploy Serverless Artillery from the SageMaker notebook, which we use as our loa
 
 Perform load tests against both endpoints.
 Analyze the performance of both endpoints under load in the CloudWatch dashboard, and look at how the optimized endpoint outperforms the unoptimized one.
+
+
+https://aws.amazon.com/blogs/machine-learning/unlock-performance-gains-with-xgboost-amazon-sagemaker-neo-and-serverless-artillery/
+
