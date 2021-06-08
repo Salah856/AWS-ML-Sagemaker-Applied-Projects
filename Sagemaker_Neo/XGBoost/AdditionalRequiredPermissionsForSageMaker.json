@@ -1,0 +1,115 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "cloudwatch:PutDashboard",
+            "Resource": "arn:aws:cloudwatch::*:dashboard/NeoDemo"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:PutObject",
+                "s3:DeleteBucket",
+                "s3:DeleteObject",
+                "s3:DeleteObjectVersion",
+                "s3:PutLifeCycleConfiguration",
+                "s3:GetEncryptionConfiguration",
+                "s3:PutEncryptionConfiguration",
+                "s3:PutBucketPolicy",
+                "s3:DeleteBucketPolicy",
+                "s3:GetBucketPolicy",
+                "s3:GetBucketPolicyStatus"
+            ],
+            "Resource": "arn:aws:s3:::serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:UpdateStack",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:ListStackResources"
+            ],
+            "Resource": "arn:aws:cloudformation:*:*:stack/serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:CreateRole",
+                "iam:DeleteRolePolicy",
+                "iam:PutRolePolicy",
+                "iam:DeleteRole",
+                "iam:PassRole"
+            ],
+            "Resource": "arn:aws:iam::*:role/serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sns:CreateTopic",
+                "sns:DeleteTopic",
+                "sns:GetTopicAttributes"
+            ],
+            "Resource": "arn:aws:sns:*:*:serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:UpdateFunctionCode",
+                "lambda:ListVersionsByFunction",
+                "lambda:PublishVersion",
+                "lambda:InvokeFunction",
+                "lambda:GetFunction",
+                "lambda:CreateFunction",
+                "lambda:DeleteFunction",
+                "lambda:GetFunctionConfiguration",
+                "lambda:AddPermission"
+            ],
+            "Resource": "arn:aws:lambda:*:*:function:serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups",
+                "logs:CreateLogGroup"
+            ],
+            "Resource": "arn:aws:logs:*:*:log-group:serverless-artillery-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:DeleteLogGroup",
+                "lambda:RemovePermission"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "events:DescribeRule",
+                "events:PutRule",
+                "events:DeleteRule",
+                "events:PutTargets",
+                "events:RemoveTargets"
+            ],
+            "Resource": "arn:aws:events:*:*:rule/serverless-artillery-*"
+        }
+    ]
+}
